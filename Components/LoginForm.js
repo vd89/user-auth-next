@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { loginUser } from '../lib/auth';
 
 export default class LoginForm extends Component {
   state = {
@@ -9,8 +10,10 @@ export default class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   onSubmitHandler = (e) => {
+    const { email, password } = this.state;
     e.preventDefault();
     console.log(this.state);
+    loginUser(email, password);
   };
   render() {
     return (
